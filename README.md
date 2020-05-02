@@ -3,8 +3,6 @@
 使用 Node.js 環境和 express 框架來完成的餐廳清單模板，
 提供使用者輸入餐廳名稱或餐廳種類進行搜尋。
 
-***
-
 ## 安裝
 
 1. 開啟終端機到存放此專案的位置並執行
@@ -37,7 +35,7 @@ Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
 
 ## 使用工具
 
-- [VScode](https://visualstudio.microsoft.com/zh-hant/) -開發環境
+- [VScode](https://code.visualstudio.com/) -開發環境
 - [express](https://www.npmjs.com/package/express) -應用程式框架
 - [express-handlebars](https://www.npmjs.com/package/express-handlebars) -模版引擎
 
