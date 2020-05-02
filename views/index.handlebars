@@ -1,0 +1,45 @@
+{{!-- partial template --}}
+<div class="container mt-3"></div>
+{{!-- search-bar  --}}
+<div class="row ml-5" id="search-bar" style="width: 90%; ">
+  <div class="col-6 mx-auto">
+    <form action="/search">
+      <div class="input-group mb-3">
+        <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
+              class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row mx-3" id="data-panel">
+  {{#each restaurants}}
+  <div class="col-sm-3 my-3 mx-auto">
+    <a href=" /restaurants/{{this.id}}" class="text-secondary" style="text-decoration:none;">
+      <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
+        <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{this.name}}
+          </h5>
+          <span class="badge badge-secondary font-weight-normal">
+            {{this.category}}
+          </span>
+          <span class="badge badge-pill badge-danger font-weight-normal">
+            {{this.rating}}
+            <i class="fas fa-star fa-xs"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+  {{/each}}
+</div>
+
+
+
+
+</div>
