@@ -1,0 +1,82 @@
+<form action="/restaurant/{{restaurant._id}}/edit" method="post">
+
+  <div class="container mt-3">
+    <div class="row">
+      <h4 class="col-12 col-md-10 mx-auto py-3" style="background-color: #F4CB4F;">
+
+
+        <div class="input-group" style="display: inline"><i class="fas fa-utensils pr-2"></i>餐廳名稱：
+          <input type="text" class="form-control" placeholder="輸入餐廳名字" name="name" value="{{restaurant.name}}">
+        </div>
+
+
+
+
+      </h4>
+      <div class=" col-12 col-md-10 mx-auto" style="color: white;">
+
+        <p class="mb-1">
+          <span>
+            <i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="輸入餐廳類別" name="category" value=" {{restaurant.category}}">
+        </div>
+
+
+
+        </p>
+
+        <p class="mb-1">
+          <span>
+            <i class="fas fa-map-marker-alt pr-2"></i>
+            地址：
+          </span>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="輸入餐廳地點" name="location" value=" {{restaurant.location}}">
+        </div>
+
+
+        </p>
+
+        <p class="mb-1">
+          <span>
+            <i class="fas fa-mobile-alt pr-2"></i>
+            電話：
+          </span>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="輸入餐廳電話" name="phone" value=" {{restaurant.phone}}">
+        </div>
+
+        </p>
+
+        <p class="mb-5">
+
+
+        <div class="input-group">
+          <textarea class="form-control" aria-label="With textarea" placeholder="輸入餐廳描述" name="description"
+            style="height: 5em;">{{restaurant.description}} </textarea>
+        </div>
+
+        </p>
+
+        <div class="text-center mb-3">
+
+          <button type="submit" class="mx-auto btn btn-light ">修改</button>
+          <a href="/restaurant/{{restaurant._id}}">
+            <button class="ml-3 btn btn-light">返回</button>
+          </a>
+
+        </div>
+
+        <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
+          style="max-width: 600px;">
+      </div>
+    </div>
+
+  </div>
+
+
+
+</form>

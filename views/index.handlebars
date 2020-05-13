@@ -18,7 +18,7 @@
 <div class="row mx-3" id="data-panel">
   {{#each restaurants}}
   <div class="col-sm-3 my-3 mx-auto">
-    <a href=" /restaurants/{{this._id}}" class="text-secondary" style="text-decoration:none;">
+    <a href=" /restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
       <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
         <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">
         <div class="card-body">
@@ -32,9 +32,28 @@
             {{this.rating}}
             <i class="fas fa-star fa-xs"></i>
           </span>
+
+          {{!-- 新增動化，mouseover時再出現這段html --}}
+          <div class="mt-2">
+            <a href="/restaurant/{{this._id}}/edit">
+              <button style="background-color: #F4CB4F; border:#1C312F 0.5px solid">edit</button>
+            </a>
+            <form action="/restaurant/{{this._id}}/delete" method="post" class="" style="display: inline; ">
+              <button type="submit" style="background-color: #F4CB4F; border:#1C312F 0.5px solid">delete</button>
+            </form>
+          </div>
+          <!--  -->
+
         </div>
       </div>
     </a>
+
+    <div class=" text-right">
+
+
+    </div>
+
+
   </div>
   {{/each}}
 </div>

@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
 const port = 3000
@@ -9,6 +10,7 @@ mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,
 
 //tell express where to get static files
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //tell express to use express-handlebars as the template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -22,7 +24,7 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.get('/restaurants/:id', (req, res) => {
+app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
     .lean()
@@ -36,7 +38,30 @@ app.get('/search', (req, res) => {
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.log(error))
+})
 
+app.get('/restaurant/:id/edit', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurant/:id/edit', (req, res) => {
+  const id = req.params.id
+  const body = req.body
+  return Restaurant.findById(id)
+    .then((restaurant) => {
+      restaurant.name = body.name
+      restaurant.category = body.category
+      restaurant.location = body.location
+      restaurant.phone = body.phone
+      restaurant.description = body.description
+      restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurant/${id}`))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {
