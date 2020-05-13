@@ -30,14 +30,14 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword.toLowerCase()
-//   const restaurants = restaurantList.results.filter(restaurant => {
-//     return (restaurant.name.toLowerCase().includes(keyword) ||
-//       restaurant.category.toLowerCase().includes(keyword))
-//   })
-//   res.render('index', { restaurants: restaurants })
-// })
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  Restaurant.find({ $or: [{ name: new RegExp(keyword, 'i') }, { category: new RegExp(keyword, 'i') }] })
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
+
+})
 
 app.listen(port, () => {
   console.log(`The server is listening on http://localhost:${port}`)
