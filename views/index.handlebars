@@ -34,23 +34,20 @@
           </span>
 
           {{!-- 新增動化，mouseover時再出現這段html --}}
-          <div class="mt-2">
-            <a href="/restaurant/{{this._id}}/edit">
-              <button style="background-color: #F4CB4F; border:#1C312F 0.5px solid">edit</button>
-            </a>
-            <form action="/restaurant/{{this._id}}/delete" method="post" class="" style="display: inline; ">
-              <button type="submit" style="background-color: #F4CB4F; border:#1C312F 0.5px solid">delete</button>
-            </form>
-          </div>
+
           <!--  -->
 
         </div>
       </div>
     </a>
 
-    <div class=" text-right">
-
-
+    <div class=" text-right" style="color: #1C312F;">
+      <a href="/restaurant/{{this._id}}/edit" style="text-decoration:none;">
+        <button class="btn btn-outline-light" style="border-color: #F4CB4F; ">edit</button>
+      </a>
+      <form action="/restaurant/{{this._id}}/delete" method="post" class="" style="display: inline; ">
+        <button class="btn btn-outline-light" type="submit" style="border-color: #F4CB4F; ">delete</button>
+      </form>
     </div>
 
 
