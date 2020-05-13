@@ -19,13 +19,16 @@ app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
-// app.get('/restaurants/:id', (req, res) => {
-//   const id = req.params.id
-//   const restaurant = restaurantList.results.find(index => index.id.toString() === id)
-//   res.render('show', { restaurant: restaurant })
-// })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('detail', { restaurant: restaurant }))
+    .catch(error => console.log(error))
+})
 
 // app.get('/search', (req, res) => {
 //   const keyword = req.query.keyword.toLowerCase()
