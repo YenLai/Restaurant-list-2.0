@@ -1,67 +1,83 @@
 {{!-- partial template --}}
-<div class="container mt-3"></div>
-{{!-- search-bar  --}}
-<div class="row ml-5" id="search-bar" style="width: 90%; ">
-  <div class="col-6 mx-auto">
-    <form action="/search" style="display: inline;">
-      <div class="input-group mb-3">
-        <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="{{keyword}}">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="submit" id="search-button">
-            <i class="fas fa-search"></i>
-          </button>
+<div class="container mt-3">
+  {{!-- search-bar  --}}
+  <div class="row ml-5" id="search-bar" style="width: 90%; ">
+    <div class="col-6 mx-auto">
+      <form action="/search" style="display: inline;">
+        <div class="input-group mb-3">
+          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="{{keyword}}">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="/">
+            <button type="button" class="btn btn-outline-secondary ml-2"><i class="fas fa-redo"></i></button>
+          </a>
         </div>
-        <a href="/">
-          <button type="button" class="btn btn-outline-secondary ml-2"><i class="fas fa-redo"></i></button>
-        </a>
-      </div>
-    </form>
-
-
-  </div>
-</div>
-
-<div class="row mx-3" id="data-panel">
-  {{#each restaurants}}
-  <div class="col-sm-3 my-3 mx-auto">
-    <a href=" /restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
-      <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
-        <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">
-        <div class="card-body">
-          <h5 class="card-title">
-            {{this.name}}
-          </h5>
-          <span class="badge badge-secondary font-weight-normal">
-            {{this.category}}
-          </span>
-          <span class="badge badge-pill badge-danger font-weight-normal">
-            {{this.rating}}
-            <i class="fas fa-star fa-xs"></i>
-          </span>
-
-          {{!-- 新增動化，mouseover時再出現這段html --}}
-
-          <!--  -->
-
-        </div>
-      </div>
-    </a>
-
-    <div class=" text-right" style="color: #1C312F;">
-      <a href="/restaurant/{{this._id}}/edit" style="text-decoration:none;">
-        <button class="btn btn-outline-light" style="border-color: #F4CB4F; ">edit</button>
-      </a>
-      <form action="/restaurant/{{this._id}}/delete" method="post" class="" style="display: inline; ">
-        <button class="btn btn-outline-light" type="submit" style="border-color: #F4CB4F; ">delete</button>
       </form>
     </div>
-
-
   </div>
-  {{/each}}
-</div>
+
+  <div class="row mx-3" id="data-panel">
+    {{#each restaurants}}
+    <div class="col-sm-3 my-3 mx-auto">
+      <a href=" /restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
+        <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
+          <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">
+          <div class="card-body">
+            <h6 class="card-title">
+              {{this.name}}
+            </h6>
+            <span class="badge badge-secondary font-weight-normal">
+              {{this.category}}
+            </span>
+            <span class="badge badge-pill badge-danger font-weight-normal">
+              {{this.rating}}
+              <i class="fas fa-star fa-xs"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      {{!-- 新增動化，mouseover時再出現這段html --}}
+      <div class=" text-right" style="color: #1C312F;">
+        <a href="/restaurant/{{this._id}}/edit" style="text-decoration:none;">
+          <button class="btn btn-outline-secondary btn-sm" style="border-color: #F4CB4F; ">edit</button>
+        </a>
+        <form action="/restaurant/{{this._id}}/delete" method="post" class="" style="display: inline; ">
+          <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#checkDelete"
+            data-id="{{this._id}}" style="border-color: #F4CB4F; ">delete</button>
+        </form>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="checkDelete" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              刪除該筆資料將無法回復，你確定要刪除該筆資料嗎?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+
+              <form action="/restaurant/{{this._id}}/delete" method="post" style="display: inline; ">
+                <button class="btn btn-outline-danger" type="submit">Delete</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-
-
+    </div>
+    {{/each}}
+  </div>
 </div>

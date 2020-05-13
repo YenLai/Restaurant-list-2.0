@@ -12,9 +12,7 @@ mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//tell express to use express-handlebars as the template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-//tell express to use the handlebars as the view engine
 app.set('view engine', 'handlebars')
 
 app.get('/', (req, res) => {
@@ -48,6 +46,7 @@ app.get('/restaurant/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//Update
 app.post('/restaurant/:id/edit', (req, res) => {
   const id = req.params.id
   const body = req.body
@@ -64,6 +63,7 @@ app.post('/restaurant/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//Delete
 app.post('/restaurant/:id/delete', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
