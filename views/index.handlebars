@@ -3,15 +3,21 @@
 {{!-- search-bar  --}}
 <div class="row ml-5" id="search-bar" style="width: 90%; ">
   <div class="col-6 mx-auto">
-    <form action="/search">
+    <form action="/search" style="display: inline;">
       <div class="input-group mb-3">
-        <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="">
+        <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="{{keyword}}">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="submit" id="search-button"><i
-              class="fas fa-search"></i></button>
+          <button class="btn btn-outline-secondary" type="submit" id="search-button">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
+        <a href="/">
+          <button type="button" class="btn btn-outline-secondary ml-2"><i class="fas fa-redo"></i></button>
+        </a>
       </div>
     </form>
+
+
   </div>
 </div>
 
