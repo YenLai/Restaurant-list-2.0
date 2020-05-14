@@ -2,9 +2,10 @@
 <div class="container mt-3">
   {{!-- search-bar  --}}
   <div class="row ml-5" id="search-bar" style="width: 90%; ">
-    <div class="col-6 mx-auto">
+    <div class="col-8 mx-auto">
       <form action="/search" style="display: inline;">
         <div class="input-group mb-3">
+          <a href="/restaurant/create" class="mr-4 btn btn-outline-light" style="border-color: #F4CB4F;">新增餐廳</a>
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="{{keyword}}">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
@@ -21,8 +22,8 @@
 
   <div class="row mx-3" id="data-panel">
     {{#each restaurants}}
-    <div class="col-sm-3 my-3 mx-auto">
-      <a href=" /restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
+    <div class="col-sm-3 my-3 mx-auto" id="restaurant-card">
+      <a href="/restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
         <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
           <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">
           <div class="card-body">
@@ -40,43 +41,15 @@
         </div>
       </a>
 
-      {{!-- 新增動化，mouseover時再出現這段html --}}
-      <div class=" text-right" style="color: #1C312F;">
+
+      <div class="text-right" style="color: #1C312F;">
         <a href="/restaurant/{{this._id}}/edit" style="text-decoration:none;">
-          <button class="btn btn-outline-secondary btn-sm" style="border-color: #F4CB4F; ">edit</button>
+          <button class="btn btn-outline-secondary btn-sm" style="border-color: #F4CB4F;">edit</button>
         </a>
-        <form action="/restaurant/{{this._id}}/delete" method="post" class="" style="display: inline; ">
-          <button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="modal" data-target="#checkDelete"
-            data-id="{{this._id}}" style="border-color: #F4CB4F; ">delete</button>
-        </form>
+        <a href="/restaurant/{{this._id}}/delete">
+          <button class="btn btn-outline-secondary btn-sm" style="border-color: #F4CB4F;" type="button">delete</button>
+        </a>
       </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="checkDelete" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Delete</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              刪除該筆資料將無法回復，你確定要刪除該筆資料嗎?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-
-              <form action="/restaurant/{{this._id}}/delete" method="post" style="display: inline; ">
-                <button class="btn btn-outline-danger" type="submit">Delete</button>
-              </form>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
     </div>
     {{/each}}
   </div>

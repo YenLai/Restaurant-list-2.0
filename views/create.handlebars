@@ -1,10 +1,10 @@
-<form action="/restaurant/{{restaurant._id}}/edit" method="post">
+<form action="/restaurant/create" method="post">
   <div class="container mt-3">
     <div class="row">
       <h4 class="col-12 col-md-10 mx-auto py-3" style="background-color: #F4CB4F;">
 
         <div class="input-group" style="display: inline"><i class="fas fa-utensils pr-2"></i>餐廳名稱：
-          <input type="text" class="form-control" placeholder="輸入餐廳名字" name="name" value="{{restaurant.name}}">
+          <input type="text" class="form-control" placeholder="輸入餐廳名字" name="name" value="">
         </div>
 
       </h4>
@@ -16,7 +16,7 @@
             類別：
           </span>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="輸入餐廳類別" name="category" value="{{restaurant.category}}">
+          <input type="text" class="form-control" placeholder="輸入餐廳類別" name="category" value="">
         </div>
         </p>
 
@@ -26,7 +26,7 @@
             地址：
           </span>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="輸入餐廳地點" name="location" value="{{restaurant.location}}">
+          <input type="text" class="form-control" placeholder="輸入餐廳地點" name="location" value="">
         </div>
         </p>
 
@@ -36,7 +36,7 @@
             電話：
           </span>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="輸入餐廳電話" name="phone" value="{{restaurant.phone}}">
+          <input type="text" class="form-control" placeholder="輸入餐廳電話" name="phone" value="">
         </div>
         </p>
 
@@ -46,7 +46,7 @@
             評分：
           </span>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="輸入餐廳評分" name="rating" value="{{restaurant.rating}}">
+          <input type="text" class="form-control" placeholder="輸入餐廳評分" name="rating" value="">
         </div>
         </p>
 
@@ -59,7 +59,7 @@
           </span>
         <div class="input-group">
           <textarea class="form-control" aria-label="With textarea" placeholder="輸入餐廳描述" name="description"
-            style="height: 5em;">{{restaurant.description}} </textarea>
+            style="height: 5em;"></textarea>
         </div>
         </p>
 
@@ -69,23 +69,21 @@
             餐廳圖片(url)：
           </span>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="輸入餐廳圖片網址" name="image" value="{{restaurant.image}}">
+          <input type="text" class="form-control" placeholder="輸入餐廳圖片網址" name="image" value="">
         </div>
         </p>
 
-        <div class="text-center mb-3">
 
-          <button type="submit" class="mx-auto btn btn-outline-light" style="border-color: #F4CB4F; ">修改</button>
-          <a href="/restaurant/{{restaurant._id}}">
+
+        <div class=" text-center mb-3">
+
+          <button type="submit" class="mx-auto btn btn-outline-light" style="border-color: #F4CB4F; ">完成</button>
+          <a href="/">
             <button class="ml-3 btn btn-outline-light" type="button" style="border-color: #F4CB4F; ">返回</button>
           </a>
 
         </div>
 
-
-
-        <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
-          style="max-width: 600px;">
       </div>
     </div>
   </div>

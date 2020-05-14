@@ -22,11 +22,16 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get('/restaurant/create', (req, res) => {
+  res.render('create')
+})
+
 app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
+  const detail = true
   Restaurant.findById(id)
     .lean()
-    .then(restaurant => res.render('detail', { restaurant: restaurant }))
+    .then(restaurant => res.render('detail', { restaurant, detail }))
     .catch(error => console.log(error))
 })
 
@@ -46,6 +51,22 @@ app.get('/restaurant/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.post('/restaurant/create', (req, res) => {
+  const restaurant = req.body
+  return Restaurant.create({
+    name: restaurant.name,
+    category: restaurant.category,
+    image: restaurant.image,
+    location: restaurant.location,
+    phone: restaurant.phone,
+    google_map: `https://www.google.com/maps/search/?api=1&query=${restaurant.location}`,
+    description: restaurant.description,
+    rating: restaurant.rating
+  })
+    .then(res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 //Update
 app.post('/restaurant/:id/edit', (req, res) => {
   const id = req.params.id
@@ -55,8 +76,11 @@ app.post('/restaurant/:id/edit', (req, res) => {
       restaurant.name = body.name
       restaurant.category = body.category
       restaurant.location = body.location
+      restaurant.google_map = `https://www.google.com/maps/search/?api=1&query=${body.location}`
       restaurant.phone = body.phone
       restaurant.description = body.description
+      restaurant.rating = body.rating
+      restaurant.image = body.image
       restaurant.save()
     })
     .then(() => res.redirect(`/restaurant/${id}`))
@@ -64,6 +88,15 @@ app.post('/restaurant/:id/edit', (req, res) => {
 })
 
 //Delete
+app.get('/restaurant/:id/delete', (req, res) => {
+  const id = req.params.id
+  const del = true
+  Restaurant.findById(id)
+    .lean()
+    .then((restaurant => res.render('detail', { restaurant, del })))
+    .catch(error => console.log(error))
+})
+
 app.post('/restaurant/:id/delete', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -75,7 +108,4 @@ app.post('/restaurant/:id/delete', (req, res) => {
 app.listen(port, () => {
   console.log(`The server is listening on http://localhost:${port}`)
 })
-
-
-
 
