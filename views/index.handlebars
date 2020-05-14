@@ -26,30 +26,39 @@
       <a href="/restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
         <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
           <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">
-          <div class="card-body">
-            <h6 class="card-title">
+          <div class="card-body ">
+            <h6 class="card-title " style="color: #1C312F">
               {{this.name}}
             </h6>
-            <span class="badge badge-secondary font-weight-normal">
-              {{this.category}}
-            </span>
-            <span class="badge badge-pill badge-danger font-weight-normal">
-              {{this.rating}}
-              <i class="fas fa-star fa-xs"></i>
-            </span>
+            <div class="row justify-content-around">
+              <div>
+                <span class="badge badge-secondary font-weight-normal">
+                  {{this.category}}
+                </span>
+                <span class="badge badge-pill badge-danger font-weight-normal">
+                  {{this.rating}}
+                  <i class="fas fa-star fa-xs"></i>
+                </span>
+              </div>
+
+              <div class="" style="display: inline;">
+                <a href="/restaurant/{{this._id}}/edit" class="mx-3" style="color:#1C312F ;text-decoration:none;">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a href="/restaurant/{{this._id}}/delete" style="color:#1C312F;text-decoration:none;">
+                  <i class="fas fa-times-circle"></i>
+                </a>
+              </div>
+
+            </div>
+
+
           </div>
         </div>
       </a>
 
 
-      <div class="text-right" style="color: #1C312F;">
-        <a href="/restaurant/{{this._id}}/edit" style="text-decoration:none;">
-          <button class="btn btn-outline-secondary btn-sm" style="border-color: #F4CB4F;">edit</button>
-        </a>
-        <a href="/restaurant/{{this._id}}/delete">
-          <button class="btn btn-outline-secondary btn-sm" style="border-color: #F4CB4F;" type="button">delete</button>
-        </a>
-      </div>
+
     </div>
     {{/each}}
   </div>
