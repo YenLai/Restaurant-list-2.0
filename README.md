@@ -38,10 +38,10 @@ Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
 8. 可開啟任一瀏覽器，輸入[http://localhost:3000](http://localhost:3000)即可開始使用!
 
 ## 畫面
-![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Home)
-![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Create)
-![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Detail)
-![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Delete)
+![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Home.PNG)
+![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Create.PNG)
+![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Detail.PNG)
+![image](https://github.com/YenLai/Restaurant-list-2.0//tree/master/img/Delete.PNG)
 
 ***
 
