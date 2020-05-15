@@ -1,11 +1,13 @@
 {{!-- partial template --}}
 <div class="container mt-3">
   {{!-- search-bar  --}}
-  <div class="row ml-5" id="search-bar" style="width: 90%; ">
-    <div class="col-8 mx-auto">
+  <div class="row mx-auto justify-content-between" id="search-bar" style="width: 90%;">
+    <div class="col-2">
+      <a href="/restaurant/create" class="btn btn-outline-light" style="border-color: #F4CB4F;">新增餐廳</a>
+    </div>
+    <div class="col-7 mx-auto">
       <form action="/search" style="display: inline;" method="GET">
         <div class="input-group mb-3">
-          <a href="/restaurant/create" class="mr-4 btn btn-outline-light" style="border-color: #F4CB4F;">新增餐廳</a>
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="{{keyword}}">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
@@ -18,11 +20,23 @@
         </div>
       </form>
     </div>
+    <div class="dropdown col-2">
+      <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" style="border-color: #F4CB4F; ">
+        Sort
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/sort/name/asc">餐廳名稱 (A -> Z)</a>
+        <a class="dropdown-item" href="/sort/name/desc">餐廳名稱 (Z -> A)</a>
+        <a class="dropdown-item" href="/sort/rating/asc">rating (低 -> 高)</a>
+        <a class="dropdown-item" href="/sort/rating/desc">rating (高 -> 低)</a>
+      </div>
+    </div>
   </div>
 
   <div class="row mx-3" id="data-panel">
     {{#each restaurants}}
-    <div class="col-sm-3 my-3 mx-auto" id="restaurant-card">
+    <div class="col-6 col-lg-3 my-3 mx-auto" id="restaurant-card">
       <a href="/restaurant/{{this._id}}" class="text-secondary" style="text-decoration:none;">
         <div class="card" style="background-color: #F4CB4F; color: #1C312F; border:1px #1C312F solid">
           <img src="{{this.image}}" height="180px" class="card-img-top" alt="{{this.name}}">

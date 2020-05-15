@@ -3,7 +3,6 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
-
 router.get('/create', (req, res) => {
   res.render('create')
 })
