@@ -3,7 +3,7 @@
   {{!-- search-bar  --}}
   <div class="row ml-5" id="search-bar" style="width: 90%; ">
     <div class="col-8 mx-auto">
-      <form action="/search" style="display: inline;">
+      <form action="/search" style="display: inline;" method="GET">
         <div class="input-group mb-3">
           <a href="/restaurant/create" class="mr-4 btn btn-outline-light" style="border-color: #F4CB4F;">新增餐廳</a>
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱或種類" value="{{keyword}}">
