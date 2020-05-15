@@ -2,7 +2,7 @@
 
 使用 Node.js 和 express 框架來完成的餐廳清單，
 資料庫使用MongoDB，
-提供使用者新增、修改、刪除、搜尋餐廳的功能。
+提供使用者新增、修改、刪除、搜尋、排序餐廳的功能。
 
 
 ## 環境安裝
@@ -51,6 +51,6 @@ Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
 - [express](https://www.npmjs.com/package/express) -應用程式框架
 - [express-handlebars](https://www.npmjs.com/package/express-handlebars) -模版引擎
 - [mongoose](https://mongoosejs.com/) -ODM
-
+- [method-override](https://www.npmjs.com/package/method-override) - RESTful routes
 
 
