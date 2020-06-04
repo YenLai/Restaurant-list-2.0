@@ -4,13 +4,15 @@
       <div class="col-md-6 m-auto">
         <div class="card card-body">
           <h2 class="text-center">Login</h2>
+          {{> message}}
           <div>
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
           </div>
           <div class="my-4">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter password"
+              required>
           </div>
           <button type="submit" class="btn btn-outline-dark btn-block">Login</button>
           <p class="mt-2">
