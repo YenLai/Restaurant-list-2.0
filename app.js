@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('method'))
 app.use(routes)
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
+app.set('view engine', 'hbs')
 
 app.listen('3000', () => {
   console.log(`The server is listening on http://localhost:3000`)
