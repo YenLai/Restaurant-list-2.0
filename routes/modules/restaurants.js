@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
       restaurant.image = body.image
       restaurant.save()
     })
-    .then(() => res.redirect(`/restaurant/${id}`))
+    .then(() => res.redirect(`/restaurant/${_id}`))
     .catch(error => console.log(error))
 })
 
