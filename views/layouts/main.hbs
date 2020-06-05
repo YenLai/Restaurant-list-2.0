@@ -20,16 +20,9 @@
     {{/if}}
   </nav>
 
-  {{!-- <div class=" carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="/restaurant.jpg" class="d-block w-100" alt="..." style="height: 50%;">
-      </div>
-    </div>
-  </div> --}}
-
-
-
+  {{#if isAuthenticated}}
+  {{> carousel}}
+  {{/if}}
   <!-- partial template -->
 
   {{{body}}}
