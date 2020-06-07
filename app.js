@@ -5,13 +5,18 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 
-const app = express()
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 const routes = require('./routes')
 require('./config/mongoose')
 const usePassport = require('./config/passport')
 
+const app = express()
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -34,7 +39,7 @@ app.use(routes)
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
 app.set('view engine', 'hbs')
 
-app.listen('3000', () => {
-  console.log(`The server is listening on http://localhost:3000`)
+app.listen(PORT, () => {
+  console.log(`The server is listening on http://localhost:${PORT}.`)
 })
 

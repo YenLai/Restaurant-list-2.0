@@ -4,6 +4,8 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 const User = require('../../models/user')
 
+
+
 router.get('/', (req, res) => {
   const userId = req.user._id
   Restaurant.find({ userId })

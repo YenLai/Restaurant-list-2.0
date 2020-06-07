@@ -1,10 +1,10 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 
 module.exports = app => {
-
   // initialize passport modules
   app.use(passport.initialize())
   app.use(passport.session())
@@ -17,24 +17,52 @@ module.exports = app => {
           return done(null, false, { message: '該 Email 尚未註冊過。' })
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
-          if (!isMatch)
+          if (!isMatch) {
             return done(null, false, { message: '密碼錯誤。' })
+          }
           return done(null, user)
         })
-          .catch(err => console.log(err))
       })
+      .catch(err => done(err, false))
   }))
+
+  passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_ID,
+    clientSecret: process.env.FACEBOOK_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK,
+    profileFields: ['displayName', 'email']
+  },
+    (accessToken, refreshToken, profile, done) => {
+      console.log(profile)
+      const { name, email } = profile._json
+      User.findOne({ email })
+        .then(user => {
+          if (user) return done(null, user)
+          const randomPassword = Math.random().toString(36).slice(-8)
+          bcrypt
+            .genSalt(10)
+            .then(salt => bcrypt.hash(randomPassword, salt))
+            .then(hash => User.create({
+              name,
+              email,
+              password: hash
+            }))
+            .then(user => done(null, user))
+            .catch(err => done(err, false))
+        })
+    }))
+
 
   //set serialize and deserialize
   passport.serializeUser((user, done) => {
-    return done(null, user._id)
+    done(null, user._id)
   })
 
   passport.deserializeUser((id, done) => {
     User.findById(id)
       .lean()
       .then(user => done(null, user))
-      .catch(err => console.log(err))
+      .catch(err => done(err, null))
   })
 }
 

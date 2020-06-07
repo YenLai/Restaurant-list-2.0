@@ -12,7 +12,7 @@
 
 <body style="background-color: #1C312F; font-family: 'Noto Sans TC';">
   <nav class="navbar navbar-dark" style="background-color: rgb(13, 24, 23); color: white;">
-    <a class="navbar-brand" href="/">Restaurant Seeker</a>
+    <a class="navbar-brand" href="/">{{#if isAuthenticated}}{{user.name}}'s {{/if}}Restaurant Seeker</a>
     {{#if isAuthenticated}}
     <a href="/user/logout" class="btn btn-outline-light mr-0">Logout</a>
     {{else}}
